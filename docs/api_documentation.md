@@ -19,8 +19,8 @@ All API calls go through the base URL `https://ecsutdevents.azurewebsites.net/`.
     "endTime": "DateTime",
     "description": "string",
     "orgs": [
-        "org_slug: string",
-        "ACM"
+        "org_uId: string",
+        "30F8Cu6aZEXxrwFyEzndTOvZcpo2"
     ],
     "tags": [
         "name: string",
@@ -37,7 +37,7 @@ where `DateTime` is a string of the form ``"yyyy-mm-ddThh:mm:ssZ"`` (UTC time).
 |Create|	POST|	`/api/events`|	Create an event. Event must be specified as JSON in **body** of request (`id` not required). `id` returned on successful POST|
 |Find all|	GET|	`/api/events/all`|	Retrieve all events in the database|
 |Find single|	GET|	`/api/events/{event_id}`|	Retrieves the event with id `{event_id}`|
-|Find all events by an org| GET| `/api/events/org={org_slug}`| Retrieves events where at least one of the orgs matches `{org_slug}`|
+|Find all events by an org| GET| `/api/events/org={org_uId}`| Retrieves events where at least one of the orgs matches `{org_uId}`|
 |Find events within date range| GET| `/api/events/date/start={startTime}&end={endTime}`| Get all events within a specific date range, must provide both `startTime` and `endTime` in the following format: `"yyyy-mm-ddThh:mm:ssZ"`. You can supply "none" to ONE of the variables to fallback to a default that encapsulates all past or future events.|
 |Update|	PUT|	`/api/events`|	Update an event. **All fields of the event must be specified as JSON in body of request (INCLUDING id)**. `id` returned on successful PUT|
 |Delete|	DELETE|	`/api/events/{event_id}`|	Deletes the event with id `{event_id}`|
@@ -71,7 +71,7 @@ where `DateTime` is a string of the form ``"yyyy-mm-ddThh:mm:ssZ"`` (UTC time).
 |-------|-------|------|-------------|
 |Create|	POST|	`/api/orgs`|	Create an organization. Organization must be specified as JSON in **body** of request (**`uId` REQUIRED**). `uId` returned on successful POST|
 |Find all|	GET|	`/api/orgs/all`	|Retrieve all organizations in the database|
-|Find single by uid|	GET|	`/api/orgs/{org_id}`	|Retrieve the organization with id `{org_id}`|
+|Find single by uid|	GET|	`/api/orgs/{org_uId}`	|Retrieve the organization with id `{org_uId}`|
 |Find single by slug|	GET|	`/api/orgs/slug={org_slug}`	|Retrieve the organization with slug `{org_slug}`|
 |Update|	PUT|	`/api/orgs`|	Update an organization. **All fields of organization must be specified as JSON in body (`uId` REQUIRED**). `uId` returned on successful PUT|
 |Delete|	DELETE|	/api/orgs/{org_uId}|	Deletes the organization with id `{org_uId}`|
